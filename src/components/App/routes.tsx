@@ -1,11 +1,12 @@
-import Test from '@/pages/App/App';
-import Todo from '@/pages/Todo/Todo';
+import { MainDemo } from '@/pages/MainDemo';
+import { Todo } from '@/pages/Todo';
 import { SomeError } from '@/components/SomeError';
+import { Demo } from '@/pages/Demo';
 
 export const routes = [
   {
     path: '/',
-    component: Test,
+    component: MainDemo,
     isPrivate: false,
     exact: true
   },
@@ -13,6 +14,11 @@ export const routes = [
     path: '/todo',
     component: Todo,
     isPrivate: true
+  },
+  {
+    path: '/demo',
+    component: Demo,
+    isPrivate: false
   },
   {
     path: '/error',

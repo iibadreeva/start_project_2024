@@ -108,4 +108,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export { Todo };
