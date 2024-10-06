@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import cn from "classnames";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import cn from 'classnames';
 
-import { AppState } from "store";
+import { AppState } from 'store';
 import {
   addTodo,
   removeTodo,
@@ -10,22 +10,22 @@ import {
   fetchTodos,
   deleteTodo,
   toggleStatus,
-  addNewTodo,
-} from "../../store/todoSlice";
+  addNewTodo
+} from '../../store/todoSlice';
 
 const Todo = () => {
   const { todos, status, error } = useSelector(
-    (state: AppState) => state.todos,
+    (state: AppState) => state.todos
   );
   // const todos = useSelector((state: AppState) => state.todos.todos);
   // const [todos, setToos] = useState<TodoType[]>([]);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const dispatch = useDispatch();
 
   const handleAddTodo = () => {
     // dispatch(addTodo({ text }));
     dispatch(addNewTodo(text) as any);
-    setText("");
+    setText('');
     // if (text !== "") {
     //   const todo = {
     //     id: new Date().toISOString(),
@@ -61,7 +61,7 @@ const Todo = () => {
   }, [dispatch]);
 
   return (
-    <div className="container mx-auto py-2">
+    <div>
       <label>
         <input
           className="border-2 border-r-0 border-gray-300  rounded-bl-md rounded-tl-md h-8"
@@ -77,7 +77,7 @@ const Todo = () => {
         </button>
       </label>
 
-      {status === "loading" && <h2>Loading</h2>}
+      {status === 'loading' && <h2>Loading</h2>}
       {error && <h2>An error soccer: {error}</h2>}
 
       <ul className="">
@@ -89,8 +89,8 @@ const Todo = () => {
               onChange={() => handleCompletedTodo(id)}
             />
             <span
-              className={cn("px-2", {
-                "line-through": completed,
+              className={cn('px-2', {
+                'line-through': completed
               })}
             >
               {title}
