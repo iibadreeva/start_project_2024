@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { AiFillBank } from 'react-icons/ai';
 import { SlPhone } from 'react-icons/sl';
 import { FaAt } from 'react-icons/fa6';
 import { FaRegCommentDots } from 'react-icons/fa';
 import Img from './cake.jpg';
+import { testMine2 } from '@/assets/script.js';
 
 import './App.css';
 import styles from './App.module.scss';
 
 const MainDemo = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    (window as any).testMine();
+    // testMine2();
+  }, []);
+
   return (
     <div className="">
       <div className="sm:hidden block">I'm hidden</div>
