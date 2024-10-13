@@ -27,10 +27,13 @@ export const userLinks: LinkType[] = [
     name: 'Демо',
     linkTo: '/demo'
   },
-
   {
     name: 'Иконки',
     linkTo: '/icons'
+  },
+  {
+    name: 'Чат',
+    linkTo: '/messenger'
   },
   {
     name: 'Форум',

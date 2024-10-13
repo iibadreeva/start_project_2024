@@ -2,6 +2,9 @@ import { MainDemo } from '@/pages/MainDemo';
 import { Todo } from '@/pages/Todo';
 import { SomeError } from '@/components/SomeError';
 import { Demo } from '@/pages/Demo';
+import { Auth } from '@/pages/Auth';
+import { Signup } from '@/pages/Signup';
+import { Messenger } from '@/pages/Messenger';
 
 export const routes = [
   {
@@ -18,6 +21,21 @@ export const routes = [
   {
     path: '/demo',
     component: Demo,
+    isPrivate: false
+  },
+  {
+    path: '/auth',
+    component: Auth,
+    isPrivate: false
+  },
+  {
+    path: '/signup',
+    component: Signup,
+    isPrivate: false
+  },
+  {
+    path: '/messenger',
+    component: Messenger,
     isPrivate: false
   },
   {

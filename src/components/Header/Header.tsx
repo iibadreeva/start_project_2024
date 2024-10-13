@@ -33,14 +33,20 @@ const Header: FC = () => {
         </ul>
         <ul className="inline-flex items-center">
           <li>
-            <button className="ml-2 py-1 px-3 border-2 rounded-full border-indigo-600 text-indigo-600 hover:text-white hover:bg-indigo-800">
+            <Link
+              to="/auth"
+              className="ml-2 py-1 px-3 border-2 rounded-full border-indigo-600 text-indigo-600 hover:text-white hover:bg-indigo-800"
+            >
               Login
-            </button>
+            </Link>
           </li>
           <li>
-            <button className="ml-2 shadow-md shadow-indigo-300 py-1 px-3 border-2 rounded-full border-indigo-600 text-indigo-600 hover:text-white hover:bg-indigo-800">
+            <Link
+              to="/signup"
+              className="ml-2 shadow-md shadow-indigo-300 py-1 px-3 border-2 rounded-full border-indigo-600 text-indigo-600 hover:text-white hover:bg-indigo-800"
+            >
               Register
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>
