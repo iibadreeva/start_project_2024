@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Messenger: React.FC = () => {
-  // @ts-ignore
   return (
     <div className="h-screen w-full flex antialiased text-gray-800 bg-white overflow-hidden">
       <div className="flex-1 flex flex-col">
