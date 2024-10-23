@@ -1,43 +1,45 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import { withErrorBoundary } from '@/components/ErrorBoundary';
 import { PrivateRoute } from '@/components/PrivateRoute';
 import { Header } from '@/components/Header';
+import { withAuth } from '@/hocs/withAuth';
+import { AppState } from '@/store';
+
 import { routes } from './routes';
 
-export const useAuth = () => {
-  const [isAuthorized, setAuth] = useState(true);
+const App: React.FC = () => {
+  const { isAuth } = useSelector((state: AppState) => state.user, shallowEqual);
 
-  const signIn = () => {
-    setAuth(true);
-  };
+  console.log('app', isAuth);
+  return (
+    <Router>
+      <Header />
+      <main className="container mx-auto px-4 max-w-screen-xl">
+        <Switch>
+          {routes.map(({ path, component, isPrivate, ...rest }) => {
+            const RouteComponent = isPrivate ? PrivateRoute : Route;
+            // const { isAuthorized } = useAuth();?
 
-  return { isAuthorized, signIn };
+            return (
+              <RouteComponent
+                key={path}
+                path={path}
+                isAuthorized={isAuth}
+                component={withErrorBoundary(component as any)}
+                {...rest}
+              />
+            );
+          })}
+        </Switch>
+      </main>
+    </Router>
+  );
 };
 
-const App: React.FC = () => (
-  <Router>
-    <Header />
-    <main className="container mx-auto px-4 max-w-screen-xl">
-      <Switch>
-        {routes.map(({ path, component, isPrivate, ...rest }) => {
-          const RouteComponent = isPrivate ? PrivateRoute : Route;
-          const { isAuthorized } = useAuth();
+const withAuthApp = withAuth(App);
 
-          return (
-            <RouteComponent
-              key={path}
-              path={path}
-              isAuthorized={isAuthorized}
-              component={withErrorBoundary(component as any)}
-              {...rest}
-            />
-          );
-        })}
-      </Switch>
-    </main>
-  </Router>
-);
-
-export { App };
+export { withAuthApp as App };
+// export { App };

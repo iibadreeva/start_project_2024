@@ -3,32 +3,24 @@ import { useFormik, FormikValues, FormikErrors } from 'formik';
 
 const Auth = () => {
   type FormType = {
-    firstName: string;
-    lastName: string;
     email: string;
+    password: string;
   };
 
   const validate = (values: FormikValues) => {
     const errors: FormikErrors<FormType> = {};
-    if (!values.firstName) {
-      errors.firstName = 'Required';
-    } else if (values.firstName.length > 15) {
-      errors.firstName = 'Must be 15 characters or less';
-    }
-
-    if (!values.lastName) {
-      errors.lastName = 'Required';
-    } else if (values.lastName.length > 20) {
-      errors.lastName = 'Must be 20 characters or less';
+    if (!values.password) {
+      errors.password = 'Required';
     }
 
     if (!values.email) {
       errors.email = 'Required';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = 'Invalid email address';
     }
+    // else if (
+    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    // ) {
+    //   errors.email = 'Invalid email address';
+    // }
 
     return errors;
   };
@@ -36,12 +28,11 @@ const Auth = () => {
   const formik = useFormik<FormType>({
     initialValues: {
       email: '',
-      firstName: '',
-      lastName: ''
+      password: ''
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log('log', values);
     }
   });
 
@@ -59,7 +50,7 @@ const Auth = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6" onSubmit={formik.handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -73,6 +64,8 @@ const Auth = () => {
                 name="email"
                 type="email"
                 autoComplete="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -102,6 +95,8 @@ const Auth = () => {
                 name="password"
                 type="password"
                 autoComplete="current-password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
