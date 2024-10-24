@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getUserInfo } from '@/store/userSlice';
 import { AppState } from '@/store';
+import { Loading } from '@/components/Loading';
 
 export const withAuth = <T extends object>(
   WrappedComponent: ComponentType<T>
@@ -20,8 +21,7 @@ export const withAuth = <T extends object>(
     if ((pending && !isAuth) || load) {
       return (
         <div className="app">
-          loading
-          {/*<Loading />*/}
+          <Loading />
         </div>
       );
     }

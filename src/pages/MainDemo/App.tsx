@@ -9,6 +9,113 @@ import { testMine2 } from '@/assets/script.js';
 import './App.css';
 import styles from './App.module.scss';
 
+const Pie1 = () => (
+  <div id="my-pie-chart-container">
+    <div id="my-pie-chart"></div>
+
+    <div id="legenda">
+      <div className="entry">
+        <div id="color-brown" className="entry-color"></div>
+        <div className="entry-text">Antarctica</div>
+      </div>
+      <div className="entry">
+        <div id="color-black" className="entry-color"></div>
+        <div className="entry-text">Australia</div>
+      </div>
+      <div className="entry">
+        <div id="color-blue" className="entry-color"></div>
+        <div className="entry-text">North America</div>
+      </div>
+      <div className="entry">
+        <div id="color-green" className="entry-color"></div>
+        <div className="entry-text">South America</div>
+      </div>
+      <div className="entry">
+        <div id="color-yellow" className="entry-color"></div>
+        <div className="entry-text">Europe</div>
+      </div>
+      <div className="entry">
+        <div id="color-orange" className="entry-color"></div>
+        <div className="entry-text">Africa</div>
+      </div>
+      <div className="entry">
+        <div id="color-red" className="entry-color"></div>
+        <div className="entry-text">Asia</div>
+      </div>
+    </div>
+  </div>
+);
+
+const Pie2 = () => (
+  <ul className="chart-skills">
+    <li>
+      <span>CSS</span>
+    </li>
+    <li>
+      <span>HTML</span>
+    </li>
+    <li>
+      <span>PHP</span>
+    </li>
+    <li>
+      <span>Python</span>
+    </li>
+  </ul>
+);
+
+const Pie3 = () => (
+  <div className="progress-bar-wrap">
+    <div className="progress-bar green">
+      <progress value="35" max="100">
+        75%
+      </progress>
+    </div>
+    <div className="progress-bar blue">
+      <progress value="35" max="100">
+        75%
+      </progress>
+    </div>
+  </div>
+);
+
+const Pie4 = () => {
+  useEffect(() => {
+    let captionsList = document.querySelectorAll('.caption-item');
+    let unitsList = document.querySelectorAll('.unit');
+
+    captionsList.forEach(function (item, index) {
+      item.addEventListener('mouseover', function () {
+        unitsList[index].classList.add('hovered');
+      });
+
+      item.addEventListener('mouseout', function () {
+        unitsList[index].classList.remove('hovered');
+      });
+    });
+  }, []);
+
+  return (
+    <div className="canvas">
+      <div className="legend">
+        <ul className="caption-list">
+          <li className="caption-item ">еда</li>
+          <li className="caption-item">соседи</li>
+          <li className="caption-item">отсутствие рабочего места</li>
+        </ul>
+      </div>
+
+      <svg className="chart" width="500" height="500" viewBox="0 0 50 50">
+        <a className="link-chart" href="https://mail.ru/">
+          <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
+        </a>
+
+        <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
+        <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
+      </svg>
+    </div>
+  );
+};
+
 const MainDemo = () => {
   const ref = useRef(null);
 
@@ -20,6 +127,12 @@ const MainDemo = () => {
   return (
     <div className="">
       <div className="sm:hidden block">I'm hidden</div>
+      {/*<div className="pie_1"></div>*/}
+
+      {/*<Pie1 />*/}
+      {/*<Pie2 />*/}
+      {/*<Pie3 />*/}
+      <Pie4 />
 
       <div>
         <div

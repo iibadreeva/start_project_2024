@@ -1,3 +1,386 @@
 .header-link {
     @apply inline-block py-6 px-2 border-b-2 border-transparent hover:text-purple-800 hover:border-purple-400
 }
+
+.pie_1 {
+    width: 200px;
+    height: 200px;
+    background-image: conic-gradient(orange 50%, blue 50% 75%, red 75% 90%, green 90%);
+    border-radius: 50%
+}
+
+
+
+#my-pie-chart-container {
+    display: flex;
+    align-items: center;
+}
+
+#my-pie-chart {
+    background: conic-gradient(brown 0.00%, black 0.00% 0.56%, blue 0.56% 5.29%, green 5.29% 13.57%, yellow 13.57% 22.90%, orange 22.90% 40.79%, red 40.79%);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+#legenda {
+    margin-left: 20px;
+    background-color: white;
+    padding: 5px;
+}
+
+.entry {
+    display: flex;
+    align-items: center;
+}
+
+.entry-color {
+    height: 10px;
+    width: 10px;
+}
+
+.entry-text {
+    margin-left: 5px;
+}
+
+#color-red {
+    background-color: red;
+}
+
+#color-orange {
+    background-color: orange;
+}
+
+#color-yellow {
+    background-color: yellow;
+}
+
+#color-green {
+    background-color: green;
+}
+
+#color-blue {
+    background-color: blue;
+}
+
+#color-black {
+    background-color: black;
+}
+
+#color-brown {
+    background-color: brown;
+}
+
+/* --- */
+
+.chart-skills {
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+.chart-skills *,
+.chart-skills::before {
+    box-sizing: border-box;
+}
+
+
+/* CHART-SKILLS STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.chart-skills {
+    position: relative;
+    /*width: 175px;*/
+    width: 350px;
+    height: 175px;
+    /*overflow: hidden;*/
+    /*background: #ccc;*/
+    /*transform: scale(.5);*/
+}
+
+.chart-skills::before,
+.chart-skills::after {
+    position: absolute;
+}
+
+.chart-skills::before {
+    content: '';
+    width: inherit;
+    height: inherit;
+    border: 45px solid rgba(211, 211, 211, .3);
+    border-bottom: none;
+    border-top-left-radius: 175px;
+    border-top-right-radius: 175px;
+    /*border-top-left-radius: 175px;*/
+    /*border-top-right-radius: 175px;*/
+    /*background: blue;*/
+}
+
+.chart-skills::after {
+    content: 'Top Skills';
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: cadetblue;
+    /*background: green;*/
+}
+
+.chart-skills li {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border: 45px solid;
+    border-top: none;
+    border-bottom-left-radius: 175px;
+    border-bottom-right-radius: 175px;
+    /*border-bottom-left-radius: 175px;*/
+    /*border-bottom-right-radius: 175px;*/
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+    /*backface-visibility: hidden;*/
+    animation-fill-mode: forwards;
+    animation-duration: .4s;
+    animation-timing-function: linear;
+}
+
+.chart-skills li:nth-child(1) {
+    z-index: 4;
+    border-color: green;
+    animation-name: rotate-one;
+}
+
+.chart-skills li:nth-child(2) {
+    z-index: 3;
+    border-color: firebrick;
+    animation-name: rotate-two;
+    animation-delay: .4s;
+}
+
+.chart-skills li:nth-child(3) {
+    z-index: 2;
+    border-color: steelblue;
+    animation-name: rotate-three;
+    animation-delay: .8s;
+}
+
+
+.chart-skills span {
+    position: absolute;
+    font-size: .85rem;
+    backface-visibility: hidden;
+    animation: fade-in .4s linear forwards;
+}
+
+.chart-skills li:nth-child(1) span {
+    top: 5px;
+    left: 10px;
+    transform: rotate(-2deg);
+    /*transform: rotate(-21.6deg);    */
+}
+
+
+
+/* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.progress-bar-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+.progress-bar progress {
+    visibility:hidden;
+    height:0;
+    width:0;
+}
+.progress-bar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+}
+.progress-bar:hover {
+    transform: scale(1.1);
+}
+
+/*.progress-bar.green {*/
+/*    !*background: conic-gradient(blue 10%, green 35%, white 0);*!*/
+/*    background: conic-gradient(red 0% 17%, #000 17% 65%, #ccc 65% 100%);*/
+/*}*/
+
+.progress-bar.green {
+    background: conic-gradient(green 0% 17%, transparent 17% 100%);
+}
+
+.progress-bar.blue {
+    background: conic-gradient(transparent 0 17%, blue 17% 100%);
+}
+
+
+
+/*------*/
+
+
+/*@keyframes render {*/
+/*  0% {*/
+/*      stroke-dasharray: 0 100;*/
+/*  }*/
+/*}*/
+
+.canvas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*max-width: 300px;*/
+    width: 300px;
+    height: 300px;
+}
+
+.legend {
+    max-width: 250px;
+    margin-left: 30px;
+}
+
+.title {
+    font-family: "Verdana", sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    color: #591d48;
+}
+
+.caption-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.caption-item {
+    position: relative;
+
+    margin: 20px 0;
+    padding-left: 30px;
+
+    font-family: "Verdana", sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    color: #591d48;
+    cursor: pointer;
+}
+
+.caption-item:hover {
+    opacity: 0.8;
+}
+
+.caption-item::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 8px;
+}
+
+.caption-item:nth-child(1)::before {
+    background-color: red;
+}
+
+.caption-item:nth-child(2)::before {
+    background-color: #a2c6e0;
+}
+
+.caption-item:nth-child(3)::before {
+    background-color: #ffc7ec;
+}
+
+.caption-item:nth-child(4)::before {
+    background-color: #f8faa0;
+}
+
+.caption-item:nth-child(5)::before {
+    background-color: #adffd8;
+}
+
+.caption-item:nth-child(6)::before {
+    background-color: #f2c48f;
+}
+
+.caption-item:nth-child(7)::before {
+    background-color: #e3bfe2;
+}
+
+/*.chart {*/
+/*    min-width: 400px;*/
+/*}*/
+
+.unit {
+    fill: none;
+    /*stroke-width: 32;*/
+    stroke-width: 12;
+    cursor: pointer;
+    z-index: 10;
+
+    animation-name: render;
+    animation-duration: 1.5s;
+    transition-property: all;
+    transition-duration: 1.5s;
+}
+
+.unit:hover,
+.hovered {
+    opacity: 0.8;
+    /*stroke-width: 25;*/
+    /*stroke-width: 12;*/
+    transform: scale(1.1);
+    transform-origin: center center;
+}
+
+.link-chart{
+    position: relative;
+    display: inline-block;
+    background: #ccc;
+    z-index: 5;
+}
+.unit:nth-child(1)::after,
+.link-chart::after {
+    content: " New!";
+    color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
+    display: block;
+    width: 200px;
+    height: 20px;
+    background: #27aedb;
+}
+.link-chart::before {
+    content: '🎮 ';
+}
+
+.unit:nth-child(1) {
+    stroke: red;
+    /*fill: red;*/
+    stroke-dasharray: 20 100;
+    stroke-dashoffset: -0;
+}
+.unit:nth-child(2) {
+    stroke: green;
+    stroke-dasharray: 40 100;
+    stroke-dashoffset: -20;
+}
+
+.unit:nth-child(3) {
+    stroke: #ffc7ec;
+    stroke-dasharray: 100 100;
+    stroke-dashoffset: -60;
+}
+
+
+
