@@ -230,18 +230,15 @@
 /*  }*/
 /*}*/
 
-.canvas {
+.pie-wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*max-width: 300px;*/
     width: 300px;
-    height: 300px;
 }
 
 .legend {
-    max-width: 250px;
-    margin-left: 30px;
+    max-width: 150px;
 }
 
 .title {
@@ -259,10 +256,8 @@
 
 .caption-item {
     position: relative;
-
-    margin: 20px 0;
+    margin-bottom: 15px;
     padding-left: 30px;
-
     font-family: "Verdana", sans-serif;
     font-size: 16px;
     line-height: 18px;
@@ -292,94 +287,50 @@
 }
 
 .caption-item:nth-child(2)::before {
-    background-color: #a2c6e0;
+    background-color: green;
 }
 
 .caption-item:nth-child(3)::before {
     background-color: #ffc7ec;
 }
-
-.caption-item:nth-child(4)::before {
-    background-color: #f8faa0;
+.chart {
+    transform: rotate(-90deg);
+    width: 150px;
+    height: 150px;
 }
-
-.caption-item:nth-child(5)::before {
-    background-color: #adffd8;
-}
-
-.caption-item:nth-child(6)::before {
-    background-color: #f2c48f;
-}
-
-.caption-item:nth-child(7)::before {
-    background-color: #e3bfe2;
-}
-
-/*.chart {*/
-/*    min-width: 400px;*/
-/*}*/
-
 .unit {
     fill: none;
-    /*stroke-width: 32;*/
-    stroke-width: 12;
+    stroke-width: 22;
     cursor: pointer;
-    z-index: 10;
 
     animation-name: render;
     animation-duration: 1.5s;
     transition-property: all;
     transition-duration: 1.5s;
 }
-
 .unit:hover,
 .hovered {
+    z-index: 10;
     opacity: 0.8;
-    /*stroke-width: 25;*/
-    /*stroke-width: 12;*/
     transform: scale(1.1);
     transform-origin: center center;
 }
 
-.link-chart{
-    position: relative;
-    display: inline-block;
-    background: #ccc;
-    z-index: 5;
-}
-.unit:nth-child(1)::after,
-.link-chart::after {
-    content: " New!";
-    color: black;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 20px;
-    display: block;
-    width: 200px;
-    height: 20px;
-    background: #27aedb;
-}
-.link-chart::before {
-    content: '🎮 ';
-}
-
-.unit:nth-child(1) {
+.first {
     stroke: red;
-    /*fill: red;*/
-    stroke-dasharray: 20 100;
-    stroke-dashoffset: -0;
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: 0;
 }
-.unit:nth-child(2) {
+.second {
     stroke: green;
-    stroke-dasharray: 40 100;
-    stroke-dashoffset: -20;
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: 0;
 }
 
-.unit:nth-child(3) {
+.third {
     stroke: #ffc7ec;
     stroke-dasharray: 100 100;
-    stroke-dashoffset: -60;
+    stroke-dashoffset: 0;
 }
 
 

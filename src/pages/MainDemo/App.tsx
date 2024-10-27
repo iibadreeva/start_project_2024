@@ -80,10 +80,24 @@ const Pie3 = () => (
 
 const Pie4 = () => {
   useEffect(() => {
-    let captionsList = document.querySelectorAll('.caption-item');
-    let unitsList = document.querySelectorAll('.unit');
+    const captionsList = document.querySelectorAll('.caption-item');
+    const unitsList: any = document.querySelectorAll('.unit');
+    let all = 0;
+    let count = 0;
 
+    unitsList.forEach((item: any) => {
+      all += +item.dataset.size;
+    });
     captionsList.forEach(function (item, index) {
+      const size = +unitsList[index].dataset.size;
+      const percentTo = (size / all) * 100;
+      unitsList[index].setAttribute(
+        'style',
+        `stroke-dasharray: ${percentTo} 100; stroke-dashoffset: -${count};`
+      );
+
+      count += percentTo;
+
       item.addEventListener('mouseover', function () {
         unitsList[index].classList.add('hovered');
       });
@@ -95,22 +109,43 @@ const Pie4 = () => {
   }, []);
 
   return (
-    <div className="canvas">
+    <div className="pie-wrap">
       <div className="legend">
         <ul className="caption-list">
-          <li className="caption-item ">еда</li>
-          <li className="caption-item">соседи</li>
-          <li className="caption-item">отсутствие рабочего места</li>
+          <li className="caption-item ">еда 5</li>
+          <li className="caption-item">соседи 3</li>
+          <li className="caption-item">отсутствие рабочего места 15</li>
         </ul>
       </div>
 
-      <svg className="chart" width="500" height="500" viewBox="0 0 50 50">
+      <svg className="chart" viewBox="0 0 50 50">
         <a className="link-chart" href="https://mail.ru/">
-          <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
+          <circle
+            data-size={2}
+            className="unit first"
+            r="10.9"
+            cx="50%"
+            cy="50%"
+          ></circle>
         </a>
-
-        <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle className="unit" r="15.9" cx="50%" cy="50%"></circle>
+        <a className="link-chart" href="https://mail.ru/">
+          <circle
+            data-size={2}
+            className="unit second"
+            r="10.9"
+            cx="50%"
+            cy="50%"
+          ></circle>
+        </a>
+        <a className="link-chart" href="https://mail.ru/">
+          <circle
+            data-size={17}
+            className="unit third"
+            r="10.9"
+            cx="50%"
+            cy="50%"
+          ></circle>
+        </a>
       </svg>
     </div>
   );
