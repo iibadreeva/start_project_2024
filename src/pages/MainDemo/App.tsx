@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, MouseEvent } from 'react';
 import { AiFillBank } from 'react-icons/ai';
 import { SlPhone } from 'react-icons/sl';
 import { FaAt } from 'react-icons/fa6';
@@ -151,6 +151,102 @@ const Pie4 = () => {
   );
 };
 
+const DropDown = () => {
+  const useComponentVisible = (initialIsVisible: boolean) => {
+    const [isComponentVisible, setIsComponentVisible] =
+      useState(initialIsVisible);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: unknown) => {
+      if (
+        ref.current &&
+        !ref.current.contains((event as { target: HTMLElement }).target)
+      ) {
+        setIsComponentVisible(false);
+      }
+    };
+
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside, true);
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside, true);
+      };
+    }, []);
+
+    return { ref, isComponentVisible, setIsComponentVisible };
+  };
+
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(false);
+
+  return (
+    <div ref={ref}>
+      <button
+        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+        onClick={() => setIsComponentVisible((prev) => !prev)}
+      >
+        Dropdown button{' '}
+        <svg
+          className="w-2.5 h-2.5 ms-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+
+      {isComponentVisible && (
+        <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Dashboard1
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Settings
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Earnings
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const MainDemo = () => {
   const ref = useRef(null);
 
@@ -168,6 +264,8 @@ const MainDemo = () => {
       {/*<Pie2 />*/}
       {/*<Pie3 />*/}
       <Pie4 />
+
+      <DropDown />
 
       <div>
         <div
