@@ -5,6 +5,7 @@ import { Demo } from '@/pages/Demo';
 import { Auth } from '@/pages/Auth';
 import { Signup } from '@/pages/Signup';
 import { Messenger } from '@/pages/Messenger';
+import { Pdf } from '@/pages/Pdf';
 
 export const routes = [
   {
@@ -21,6 +22,11 @@ export const routes = [
   {
     path: '/demo',
     component: Demo,
+    isPrivate: false
+  },
+  {
+    path: '/pdf',
+    component: Pdf,
     isPrivate: false
   },
   {

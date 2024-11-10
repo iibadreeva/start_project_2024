@@ -6,3 +6,4 @@ declare module '*.jpeg';
 declare module '*.scss';
 declare module '*.module.scss';
 declare module '*.js';
+declare module 'react-base64-to-pdf';
