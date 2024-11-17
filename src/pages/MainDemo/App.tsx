@@ -3,6 +3,7 @@ import { AiFillBank } from 'react-icons/ai';
 import { SlPhone } from 'react-icons/sl';
 import { FaAt } from 'react-icons/fa6';
 import { FaRegCommentDots } from 'react-icons/fa';
+import cn from 'classnames';
 import Img from './cake.jpg';
 import { testMine2 } from '@/assets/script.js';
 
@@ -247,6 +248,27 @@ const DropDown = () => {
   );
 };
 
+const Lists = () => {
+  const [lists, setList] = useState<number[]>([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+  ]);
+  const [active, setActive] = useState<number | null>(null);
+
+  return (
+    <ul className="h-[100px] overflow-y-auto">
+      {lists.map((it) => (
+        <li
+          className={cn({ [styles.active]: active === it })}
+          key={it}
+          onClick={() => setActive(it)}
+        >
+          {it}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const MainDemo = () => {
   const ref = useRef(null);
 
@@ -258,6 +280,7 @@ const MainDemo = () => {
   return (
     <div className="">
       <div className="sm:hidden block">I'm hidden</div>
+      <Lists />
       {/*<div className="pie_1"></div>*/}
 
       {/*<Pie1 />*/}
