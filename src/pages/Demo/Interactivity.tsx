@@ -142,9 +142,9 @@ const Interactivity = () => {
                   >
                     <path
                       d="M3 8L6 11L11 3.5"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></path>
                   </svg>
                 </div>
@@ -169,9 +169,9 @@ const Interactivity = () => {
                   >
                     <path
                       d="M3 8L6 11L11 3.5"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></path>
                   </svg>
                 </div>

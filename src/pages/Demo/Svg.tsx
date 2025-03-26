@@ -81,7 +81,7 @@ const Svg = () => {
                 translate="no"
                 className="py-2 pl-2 font-mono text-xs leading-6 text-indigo-600 whitespace-pre dark:text-indigo-300"
               >
-                stroke-width: 0;
+                strokeWidth: 0;
               </td>
             </tr>
             <tr>
@@ -95,7 +95,7 @@ const Svg = () => {
                 translate="no"
                 className="py-2 pl-2 font-mono text-xs leading-6 text-indigo-600 whitespace-pre dark:text-indigo-300 border-t border-slate-100 dark:border-slate-400/10"
               >
-                stroke-width: 1;
+                strokeWidth: 1;
               </td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@ const Svg = () => {
                 translate="no"
                 className="py-2 pl-2 font-mono text-xs leading-6 text-indigo-600 whitespace-pre dark:text-indigo-300 border-t border-slate-100 dark:border-slate-400/10"
               >
-                stroke-width: 2;
+                strokeWidth: 2;
               </td>
             </tr>
           </tbody>
@@ -128,11 +128,11 @@ const Svg = () => {
               <circle cx="24" cy="24" r="23" stroke-linejoin="round"></circle>
               <path
                 d="M23 1C23 1 15 10.4901 15 24C15 37.5099 23 47 23 47"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 d="M25 1C25 1 33 10.4901 33 24C33 37.5099 25 47 25 47"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               ></path>
               <path d="M1 24H47"></path>
             </svg>
@@ -144,14 +144,14 @@ const Svg = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <circle cx="24" cy="24" r="23" stroke-linejoin="round"></circle>
+              <circle cx="24" cy="24" r="23" strokeLinejoin="round"></circle>
               <path
                 d="M23 1C23 1 15 10.4901 15 24C15 37.5099 23 47 23 47"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 d="M25 1C25 1 33 10.4901 33 24C33 37.5099 25 47 25 47"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               ></path>
               <path d="M1 24H47"></path>
             </svg>

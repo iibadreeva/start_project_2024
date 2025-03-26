@@ -16,6 +16,7 @@ const App: React.FC = () => {
   console.log('app', isAuth);
   return (
     <Router>
+        <div>s</div>
       <Header />
       <main className="container mx-auto px-4 max-w-screen-xl">
         <Switch>

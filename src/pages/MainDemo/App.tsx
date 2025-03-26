@@ -4,8 +4,15 @@ import { SlPhone } from 'react-icons/sl';
 import { FaAt } from 'react-icons/fa6';
 import { FaRegCommentDots } from 'react-icons/fa';
 import cn from 'classnames';
+import { Buffer } from 'buffer';
+// import { readFileSync, readFile } from 'fs';
+// import fs from 'fs';
+import axios from 'axios';
+import moment from 'moment'
+
 import Img from './cake.jpg';
 import { testMine2 } from '@/assets/script.js';
+import myTextFile from './file.txt';
 
 import './App.css';
 import styles from './App.module.scss';
@@ -198,9 +205,9 @@ const DropDown = () => {
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="m1 1 4 4 4-4"
           />
         </svg>
@@ -269,8 +276,46 @@ const Lists = () => {
   );
 };
 
+const LoadText = () => {
+  const [fileContent, setFileContent] = useState('');
+  const base64Text2 =
+    'data:content/type;base64,0JrQsNC60L7QuS3RgtC+IA0K0YLQtdC60YHRgg0KDQrQktC+0YIg0L/RgNC+0LHQtdGAINC4INGC0L7QvNGDINC/0YDQvtGH0LjQtQ==';
+
+  useEffect(() => {
+    axios.get(base64Text2).then((content) => {
+      const blob2 = new Blob([content.data], {
+        type: 'text/csv;charset=utf-8'
+      });
+      blob2.text().then((res) => {
+        console.log('res text', res);
+        setFileContent(res);
+      });
+
+      console.log('file', content.data);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h1>Text File Content:</h1>
+
+      <pre>{fileContent}</pre>
+    </div>
+  );
+};
+
+function timeFromDate(){
+  const from = new Date('2025-03-19T22:55:01').toISOString()
+  const to = new Date().toISOString()
+  return moment(from).from(to);
+  // return moment([2011, 8, 24]).from([2019, 8, 24]);
+}
+
+
 const MainDemo = () => {
   const ref = useRef(null);
+
+  let result = timeFromDate();
 
   useEffect(() => {
     (window as any).testMine();
@@ -279,6 +324,7 @@ const MainDemo = () => {
 
   return (
     <div className="">
+    <div>Date: {result}</div>
       <div className="sm:hidden block">I'm hidden</div>
       <Lists />
       {/*<div className="pie_1"></div>*/}
@@ -289,6 +335,7 @@ const MainDemo = () => {
       <Pie4 />
 
       <DropDown />
+      <LoadText />
 
       <div>
         <div
